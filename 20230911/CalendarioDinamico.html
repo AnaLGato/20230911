@@ -1,0 +1,276 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> Calendário Dinâmico </title>
+        <style>
+            table
+            {
+                width: 770px;
+                height: 330px;
+                text-align: center;
+                font-family:'Calibri';
+            }
+            #nomemes
+            {
+                background-color: white;
+                height: 50px;
+                color: rgb(102, 102, 102);
+            }
+            td
+            {
+              border-style: solid; 
+              border-radius: 10%;
+              border-width: 1px;
+              border-color: rgb(233, 233, 233); 
+              width: 110px;         
+              text-align: center;
+              font-size: 30; 
+              font-weight: bold;
+            }
+            td.dias
+            {
+                height: 30px;
+                font-size: 17;
+                background-color: rgb(238, 238, 238);
+                font-family:'Calibri';
+            }
+            td.dom
+            {
+                background-color: rgb(255, 255, 102) ;
+                color: rgb(205, 6, 2); 
+            }
+            td.sab
+            {
+                background-color: rgb(204, 204, 255) ;
+                color: rgb(1, 1, 154); 
+            }
+        </style>
+        <script lang="JavaScript">
+            function GerarCalendario()
+            {
+                var mes, ano;
+
+                mes = mesreferencia - 1;
+                ano = anoreferencia;
+
+                set.month()
+            }
+        </script>
+    </head>
+    <body>
+        <script lang="JavaScript">
+            var mesreferencia, anoreferencia, diadasem, d = 0;
+            
+            mesesOpcoes = new Array(12);
+
+            mesesOpcoes[0] = "Janeiro";
+            mesesOpcoes[1] = "Fevereiro";
+            mesesOpcoes[2] = "Março";
+            mesesOpcoes[3] = "Abril";
+            mesesOpcoes[4] = "Maio";
+            mesesOpcoes[5] = "Junho";
+            mesesOpcoes[6] = "Julho";
+            mesesOpcoes[7] = "Agosto";
+            mesesOpcoes[8] = "Setembro";
+            mesesOpcoes[9] = "Outubro";
+            mesesOpcoes[10] = "Novembro";
+            mesesOpcoes[11] = "Desembro";
+
+            do
+            {
+                mesreferencia = parseInt(window.prompt("Informe o mês em númeos (1-12): "));
+                anoreferencia = parseInt(window.prompt("Informe o ano em números (1900-2023): "));
+            }while((mesreferencia < 1 || mesreferencia > 12) || (anoreferencia < 1900 || anoreferencia > 2023));
+             
+            data = new Date(anoreferencia, mesreferencia - 1, 1);
+            ultimodia = new Date(anoreferencia, mesreferencia, 1 - 1);
+            ultimodia = ultimodia.getDate();
+            diadasem = data.getDay();
+
+            document.write("<center>");
+                document.write("<table>");
+
+                    document.write("<tr>");
+                        document.write("<td id='nomemes' colspan='7'> <b> " + mesesOpcoes[mesreferencia - 1] + "  " + anoreferencia +" </b> </td>");
+                    document.write("</tr>");
+
+                    document.write("<tr>");
+                        document.write("<td class='dom'> <font size='4'><b> Dom </b></font> </td>");
+                        document.write("<td class='dias'> <b> Seg </b> </td>");
+                        document.write("<td class='dias'> <b> Ter </b> </td>");
+                        document.write("<td class='dias'> <b> Qua </b> </td>");
+                        document.write("<td class='dias'> <b> Qui </b> </td>");
+                        document.write("<td class='dias'> <b> Sex </b> </td>");
+                        document.write("<td class='sab'> <font size='4'><b> Sáb </b></font> </td>");
+                    document.write("</tr>");
+
+                    document.write("<tr>"); //primeira semana
+                        document.write("<td class='dom'>");
+                            document.write(diadasem === 0 ? ++d : "");
+                        document.write("</td>");
+
+                        document.write("<td>");
+                            if(d == 0)
+                            {
+                                document.write(diadasem === 1 ? ++d : "");
+                            }
+                            else
+                            {
+                                document.write(++d);
+                            }
+                        document.write("</td>");
+
+                        document.write("<td>");
+                            if(d == 0)
+                            {
+                                document.write(diadasem === 2 ? ++d : "");
+                            }
+                            else
+                            {
+                                document.write(++d);
+                            }
+                        document.write("</td>");
+
+                        document.write("<td>");
+                            if(d == 0)
+                            {
+                                document.write(diadasem === 3 ? ++d : "");
+                            }
+                            else
+                            {
+                                document.write(++d);
+                            }
+                        document.write("</td>");
+
+                        document.write("<td>");
+                            if(d == 0)
+                            {
+                                document.write(diadasem === 4 ? ++d : "");
+                            }
+                            else
+                            {
+                                document.write(++d);
+                            }
+                        document.write("</td>");
+
+                        document.write("<td>");
+                            if(d == 0)
+                            {
+                                document.write(diadasem === 5 ? ++d : "");
+                            }
+                            else
+                            {
+                                document.write(++d);
+                            }
+                        document.write("</td>");
+
+                        document.write("<td class='sab'>");
+                            if(d == 0)
+                            {
+                                document.write(diadasem === 6 ? ++d : "");
+                            }
+                            else
+                            {
+                                document.write(++d);
+                            }
+                        document.write("</td>");
+                    document.write("</tr>");
+
+                    document.write("<tr>"); //segunda semana
+                        document.write("<td class='dom'>" + ++d + "</td>");
+                        document.write("<td>" + ++d + "</td>");
+                        document.write("<td>" + ++d + "</td>");
+                        document.write("<td>" + ++d + "</td>");
+                        document.write("<td>" + ++d + "</td>");
+                        document.write("<td>" + ++d + "</td>");
+                        document.write("<td class='sab'>" + ++d + "</td>");
+                    document.write("</tr>");
+
+                    document.write("<tr>"); //terceira semana
+                        document.write("<td class='dom'>" + ++d + "</td>");
+                        document.write("<td>" + ++d + "</td>");
+                        document.write("<td>" + ++d + "</td>");
+                        document.write("<td>" + ++d + "</td>");
+                        document.write("<td>" + ++d + "</td>");
+                        document.write("<td>" + ++d + "</td>");
+                        document.write("<td class='sab'>" + ++d + "</td>");
+                    document.write("</tr>");
+
+                    document.write("<tr>"); //quarta semana
+                        document.write("<td class='dom'>" + ++d + "</td>");
+                        document.write("<td>" + ++d + "</td>");
+                        document.write("<td>" + ++d + "</td>");
+                        document.write("<td>" + ++d + "</td>");
+                        document.write("<td>" + ++d + "</td>");
+                        document.write("<td>" + ++d + "</td>");
+                        document.write("<td class='sab'>" + ++d + "</td>");
+                    document.write("</tr>");
+
+                    document.write("<tr>"); //quinta semana
+                        document.write("<td class='dom'>");
+                            document.write(d < ultimodia ? ++d : "");
+                        document.write("</td>");
+
+                        document.write("<td>");
+                            document.write(d < ultimodia ? ++d : "");
+                        document.write("</td>");
+
+                        document.write("<td>");
+                            document.write(d < ultimodia ? ++d : "");
+                        document.write("</td>");
+                        
+                        document.write("<td>");
+                            document.write(d < ultimodia ? ++d : "");
+                        document.write("</td>");
+                        
+                        document.write("<td>");
+                            document.write(d < ultimodia ? ++d : "");
+                        document.write("</td>");
+
+                        document.write("<td>");
+                            document.write(d < ultimodia ? ++d : "");
+                        document.write("</td>");
+
+                        document.write("<td class='sab'>");
+                            document.write(d < ultimodia ? ++d : ""); 
+                        document.write("</td>");
+                    document.write("</tr>");
+
+                    if(d < ultimodia)
+                    {
+                        document.write("<tr>"); //sexta semana
+                            document.write("<td class='dom'>");
+                                document.write(d < ultimodia ? ++d : "");
+                            document.write("</td>");
+
+                            document.write("<td>");
+                                document.write(d < ultimodia ? ++d : "");
+                            document.write("</td>");
+
+                            document.write("<td>");
+                                document.write(d < ultimodia ? ++d : "");
+                            document.write("</td>");
+                            
+                            document.write("<td>");
+                                document.write(d < ultimodia ? ++d : "");
+                            document.write("</td>");
+                            
+                            document.write("<td>");
+                                document.write(d < ultimodia ? ++d : "");
+                            document.write("</td>");
+
+                            document.write("<td>");
+                                document.write(d < ultimodia ? ++d : "");
+                            document.write("</td>");
+
+                            document.write("<td class='sab'>");
+                                document.write(d < ultimodia ? ++d : ""); 
+                            document.write("</td>");
+                        document.write("</tr>");
+                    }
+                document.write("</table>");
+            document.write("</center>");
+                
+        </script>
+    </body>
+</html>
